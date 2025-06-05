@@ -1,0 +1,140 @@
+# the following parameters are the same across the project and might be needed in more than one module #
+root_dir: "/sc-rna-seq-snap-10x-Flex" # Absolute path to the main dir of the project where GitHub repo lives
+data_dir: "/sc-rna-seq-snap-10x-Flex/analyses/cellranger-analysis/results/02_cellranger_count/DefaultParameters" # Absolute path to data dir of the project with CellRanger output results. Options: "DefaultParameters", "ForcedCells8000Parameters", or else. 
+metadata_dir: "/sc-rna-seq-snap-10x-Flex/data/project_metadata" # Absolute path to metadata dir of the project. File name always named as: `project_metadata.tsv`.
+metadata_file: "project_metadata.tsv" # Options: "project_metadata.tsv" (default) or name as user wants. It needs to be in `tsv` format. It can include one or more samples, as long as it contains at least the following columns in this exact order: `ID`, `SAMPLE`, and `FASTQ`. The `ID` column must contain unique values. Additional metadata columns can be added and arranged as needed by the user (though not required). For samples with multiple technical replicates, list all associated FASTQ file paths in the same row, using commas to separate each path.
+genome_name: "GRCm39" # define genome reference and versioning. Options: (1) human: "GRCh38", "hg19", and "GRCh38_GFP_tdTomato"; (2) mouse: "GRCm39", "mm10", and "mm9"; and (3) dual index genomes: "GRCh38ANDGRCm39", "GRCh38_mm10", and "GRCh38_mm9".
+PROJECT_NAME: "PROJECT_NAME"
+PI_NAME: "PI_NAME"
+TASK_ID: "NA"
+PROJECT_LEAD_NAME: "NA"
+DEPARTMENT: "Developmental Neurobiology"
+LEAD_ANALYSTS: "Antonia Chroni, PhD"
+GROUP_LEAD: "Cody A. Ramirez, PhD"
+CONTACT_EMAIL: "antonia.chroni@stjude.org"
+PIPELINE: "Standard sc-/sn-RNA-Seq Analysis in 10X Genomics data"
+START_DATE: "10/15/2024"
+COMPLETION_DATE: "ONGOING"
+
+# the following parameters are set up as default values and/or are specific for the following modules: 
+# `./analyses/fastqc-analysis`
+# FASTQ paths to the fastqc files with format: `path1/*R2*.fastq.gz` are extracted from the `metadata_dir`.
+fastqc_metadata_file: "project_metadata_fastqc_analysis.tsv" # Options: "project_metadata_fastqc_analysis.tsv" (default) or name as user wants. It needs to be in `tsv` format. It can include one or more samples, as long as it contains at least the following columns in this exact order: `ID`, `SAMPLE`, and `FASTQ`. The `ID` column must contain unique values. Additional metadata columns can be added and arranged as needed by the user (though not required). For samples with multiple technical replicates, list all associated FASTQ file paths in the same row, using commas to separate each path.
+
+# `./analyses/cellranger-analysis`
+multi_config_dir: "/sc-rna-seq-snap-10x-Flex/data/cellranger_input_files" # Absolute path to metadata dir of the project. File name always named as: `project_metadata.tsv`.
+multi_config_file: "multi_config.csv" # Options: "multi_config.csv" (default) or name as user wants. It needs to be in `csv` format.
+cellranger_parameters: "DefaultParameters" # Options: "DefaultParameters", "ForcedCells8000Parameters", or else
+# Define the sample ID prefix(es) used in this project.
+# Sample IDs should follow a format like: PREFIX001 (e.g., DYE001, ABC002).
+# You can specify multiple prefixes if your project uses more than one.
+sample_prefix: 
+  - DYE
+  - ABC-
+  - XYZ_
+
+# `./analyses/upstream-analysis`
+print_pdf_seurat_multiple_samples: "YES" # Options: "YES" (default ALWAYS), for `02B_run_seurat_qc_multiple_samples.R`
+use_condition_split_seurat_multiple_samples: "NO" # Options: "NO" (default ALWAYS), for  `02B_run_seurat_qc_multiple_samples.R`
+grouping: "orig.ident" # define grouping to use 
+Regress_Cell_Cycle_value: "NO" # Options: "YES", "NO", "DIFF", OR "mtDNA". Indicates whether or not to regress for cell cycle and, if so, which method to use and scale data; acceptable values.
+assay_seurat_qc: "RNA" # Options: "RNA" (default ALWAYS)
+use_SoupX_filtering_seurat_qc: "NO" # Options: "YES" or "NO" (default), for `02A_run_seurat_qc.Rmd`
+min_genes: 300 # define minimum number of genes for filtering
+min_count: 500 # define minimum number of UMIs for filtering
+mtDNA_pct_default: 10 # define minimum percentage of mtDNA for filtering
+normalize_method: "log_norm" # define method for normalization of counts
+num_pcs: 30 # define number of principal components
+nfeatures_value: 3000 # define number of variable features
+prefix: "lognorm" # create label based on the normalization method used
+use_miQC: "NO" # Options: "YES" or "NO". Use of miQC R package or not; see `README.md` file for more information.
+use_only_step1: "NO" # Options: "YES" or "NO". Use of both or only first step for filtering low quality cells; see `README.md` file for more information.
+condition_value1: "Disease" # Use discrete values. Min #conditions per project: 1 and Max #conditions per project: 3. To use for visualization purposes and split UMAPs. Value to be extracted from column name in `project_metadata.tsv` file. 
+condition_value2: NULL # Use discrete values. Min #conditions per project: 1 and Max #conditions per project: 3. To use for visualization purposes and split UMAPs. Value to be extracted from column name in `project_metadata.tsv` file. 
+condition_value3: NULL # Use discrete values. Min #conditions per project: 1 and Max #conditions per project: 3. To use for visualization purposes and split UMAPs. Value to be extracted from column name in `project_metadata.tsv` file. 
+
+num_dim_seurat_qc: 30 # number of PCs to use in UMAP. For multiple variations, use: [20, 25]
+num_neighbors_seurat_qc: 30 # number of neighbors to use in UMAP. For multiple variations, use: [10, 20, 30]
+soup_fraction_value_default: 0.05 # set rho default value to use if estimated rho is > 20%
+assay_filter_object: "RNA"  # Options: "RNA" (default) or "RNA_SoupX"
+genome_name_upstream: "GRCm39" # Options for the `Genome_Specific_Cell_Cycle_Scoring` function: (1) human: "GRCh38" and "hg19"; (2) mouse: "GRCm39", "mm10", and "mm9"; and (3) dual index genomes: "DualGRCh38", "Dualhg19", "DualGRCm39", "Dualmm10", and "Dualmm9".
+
+
+num_dim_filter_object: 30 # set one value for `04_run_filter_object.Rmd`
+num_neighbors_filter_object: 30 # set one value for `04_run_filter_object.Rmd`
+use_condition_split_filter_object: "YES" # Options: "YES" (default) or "NO", for `04_run_filter_object.Rmd`
+print_pdf_filter_object: "NO" # # Options: "NO" (default ALWAYS), for `04_run_filter_object.Rmd`
+use_SoupX_filtering_filter_object: "NO" # Options: "YES" or "NO" (default) , for `04_run_filter_object.Rmd`.
+use_scDblFinder_filtering_filter_object: "NO" # Options: "YES" or "NO" (default) , for `04_run_filter_object.Rmd`.
+#PCA_Feature_List_value: transcription.factor.gene.list # set for 04_run_filter_object.Rmd if necessary
+use_SoupX_filtering_summary_report: "NO" # Options: "YES" or "NO" (default) , for `05_run_summary_report.Rmd`.
+use_scDblFinder_filtering_summary_report: "NO" # Options: "YES" or "NO" (default) , for `05_run_summary_report.Rmd`.
+
+# `./analyses/integrative-analysis`
+use_seurat_integration: "NO" # Options: "YES" or "NO"
+use_harmony_integration: "YES" # Options: "YES" or "NO"
+use_liger_integration: "NO" # Options: "YES" or "NO"
+integration_method: "harmony" # Options: "seurat", "harmony", "inmf"
+num_dim_seurat: 30
+num_dim_seurat_integration: 50
+big_data_value: FALSE # Options: "TRUE" or "FALSE"
+num_dim_harmony: 30
+n_neighbors_value: 20
+variable_value: "ID"
+reference_list_value: NULL
+PCA_Feature_List_value: NULL
+
+# `./analyses/cluster-cell-calling`
+resolution_clustering_module: "default_multiple" # Options: "custom_multiple", "default_multiple" or define value of resolution, e.g., "0.5"
+integration_method_clustering_module: "harmony" # Options:: "seurat", "harmony", "inmf"
+num_dim_clustering_module: 30 
+reduction_value_clustering_module: "harmony" # Options: For seurat: "pca"; For harmony: "harmony"; For liger: "inmf"
+assay_clustering_module: "RNA"  # Options: "RNA" (default) or "RNA_SoupX"
+
+# Initially, we use a list of multiple resolutions and then we run the module again with the single resolution that fits the data best. 
+# If no list is provided, then it will calculate the clusters by the default list.
+# We recommend to run first default and then explore a customized list of resolutions (if these are not provided in the list already).
+# In the latter case, user needs to comment in/out the `resolution_list_default_clustering_module` accordingly.
+resolution_list_clustering_module: NULL # This can be a single or multiple resolutions or NULL (default), e.g., NULL; [0.5]; [0.1, 0.5, 1]
+resolution_list_default_clustering_module: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+algorithm_value_clustering_module: 4 # Leiden algorthim (default)
+
+resolution_find_markers: "default_multiple" # "custom_multiple", "default_multiple" or define value of resolution, e.g., 0.5
+resolution_list_find_markers: 0.1 # this will be the single resolution that fits the data the best
+n_value_find_markers: 10 # number of top genes to explore
+
+# `./analyses/cell-contamination-removal-analysis`
+keep_clusters_contamination_module: [1, 2, 3, 4, 5, 7, 8, 9, 10, 12, 13, 15, 16]
+assay_contamination_module: "RNA" # Options: "RNA" (default) or "RNA_SoupX"
+
+# `./analyses/cell-types-annotation`
+module_with_input_data: "cluster-cell-calling" # Options: "cluster-cell-calling" or "cell-contamination-removal-analysis"
+input_data_folder_name: "01_cluster_cell_calling" # Options: "01_cluster_cell_calling" or "03_cluster_cell_calling" if the data are coming from the `cell-contamination-removal-analysis` module
+redution_value_annotation_module: "umap" # Options: For seurat and harmony use: "umap"; For Liger: "glue::glue("{integration_method}")"
+min.diff.med_value_annotation_module: 0.1 # Higher thresholds for pruning labels correspond to greater assignment certainty
+use_min.diff.med_annotation_module: "NO" # Options: "YES" or "NO" (default)
+assay_annotation_module: "RNA"  # Options: "RNA" (default) or "RNA_SoupX"
+
+gene_markers_dir_annotation_module: "./" # path to gene markers dir
+gene_markers_file_name_annotation_module: "<filename>.tsv" # File name with the gene markers. It needs to be in `tsv` format. Please ensure cell type names exist and match the ones in the `.figures/palettes/cell_types_palette.tsv`.
+method_annotation_module: "gene_markers&reference" # Options: "all" (for using singler, a list of gene markers and reference dataset), "singler" (for using only singler method for both broad and fine annotation), "singler&gene_markers" (for using SingleR and a list of gene markers),  "singler&reference" (for using SingleR and reference dataset), "gene_markers&reference" (for using a list of gene markers and reference dataset)
+gene_name_convention_update_annotation_module: "NO" # Options: "YES" or "NO" (default). Set to "YES" if the gene names in the gene markers file do not align with the naming convention of genes in the reference genome.
+
+ct_palette_file_broad: "cell_types_palette.tsv"  # File name with the cell types. It needs to be in `tsv` format. Please ensure cell type names exist and match the ones in the `.figures/palettes/cell_types_palette.tsv`. Alternatively, create a tsv file with your own palette and add it to the `.figures/palettes/` folder. 
+ct_palette_file_fine: "cell_types_palette.tsv" # File name with the gene markers. It needs to be in `tsv` format. Please ensure cell type names exist and match the ones in the `.figures/palettes/cell_types_palette.tsv`. Alternatively, create a tsv file with your own palette and add it to the `.figures/palettes/` folder.
+ct_palette_file_gene_markers: "cell_types_palette.tsv" # File name with the gene markers. It needs to be in `tsv` format. Please ensure cell type names exist and match the ones in the `.figures/palettes/cell_types_palette.tsv`. Alternatively, create a tsv file with your own palette and add it to the `.figures/palettes/` folder.
+ct_palette_file_reference: "cell_types_palette.tsv" # File name with the gene markers. It needs to be in `tsv` format. Please ensure cell type names exist and match the ones in the `.figures/palettes/cell_types_palette.tsv`. Alternatively, create a tsv file with your own palette and add it to the `.figures/palettes/` folder.
+
+reference_dir_annotation_module: "./" # path to reference dir
+reference_file_name_annotation_module: "<filename>.rds" # File name with the reference object. It needs to be in `rds` format.
+celltype_reference_module: "predicted.cell.signature.ident" # Column name from the reference object to be used to transfer labels
+
+# `rshiny-app`
+annotations_dir_rshiny_app: "cell_types_annotations_all" # Options: to update based on the folder with the desired annotations to use for the R shiny app from the `cell-types-annotation` module
+annotations_filename_rshiny_app: "seurat_obj_cell_types_annotations_all.rds" # Options: to update based on the object with the desired annotations to use for the R shiny app from the `cell-types-annotation` module
+
+# `./analyses/project-updates`
+results_filepath: "./" # Absolute path to the dir where local fork repo lives
+mac_results_filepath: "./" # Absolute path to the dir where local fork repo lives
+cohort_value: "/NAME_OF_FORK_REPO>"  # Name of the local fork repo
+
