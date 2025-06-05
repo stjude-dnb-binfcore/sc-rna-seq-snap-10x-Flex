@@ -12,7 +12,7 @@
 
 # Single cell RNA Seq Snap-10x-Flex workflow (ScRNASeqSnap-10x-Flex)
 
-**Snap-10x-Flex** is a comprehensive suite of tools and workflows for analyzing single-cell and single-nucleus RNA (sc/snRNA) data from **10X Flex** Genomics sequencing technology supporting human, mouse, and dual genome cohorts. **Snap-10x-Flex** is an initiative of the [Bioinformatics Core](https://www.stjude.org/research/departments/developmental-neurobiology/shared-resources/bioinformatic-core.html) at the Department of Developmental Neurobiology at the St. Jude Children's Research Hospital.
+**Snap-10x-Flex** is a comprehensive suite of tools and workflows for analyzing single-cell and single-nucleus RNA (sc/snRNA) data from [10X Flex](https://www.10xgenomics.com/products/flex-gene-expression) Genomics sequencing technology supporting human, mouse, and dual genome cohorts. **Snap-10x-Flex** is an initiative of the [Bioinformatics Core](https://www.stjude.org/research/departments/developmental-neurobiology/shared-resources/bioinformatic-core.html) at the Department of Developmental Neurobiology at the St. Jude Children's Research Hospital.
 
 
 ## Table of Contents
