@@ -1,5 +1,5 @@
 <p align="center";">
-  <img src="figures/img/SCRNA_Logo_Primary.png" alt="ScRNASeqSnap repository logo" width="560px" />
+  <img src="figures/img/SCRNA_Logo_Primary_10_Flex.png" alt="ScRNASeqSnap10Flex repository logo" width="560px" />
 </p>
 <p align="center";">
   <a href="https://www.repostatus.org/#active">
