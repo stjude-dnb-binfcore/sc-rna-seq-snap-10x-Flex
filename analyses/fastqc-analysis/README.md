@@ -49,9 +49,9 @@ bsub < lsf-script.txt
 This folder contains a script tasked to run FastQC quality control tool for all libraries across the project.
 Each libary directory contains the following files:
 - I1 is the 8 bp sample barcode, 
-- R1 is the 16bp feature barcode + 10 bp UMI, and 
-- R2 is the reads mapped to the transcriptome.
-We only need to run FastQC on the single cell R2 files. Conducting read sequence QC on I1 or R1 wouldn't really tell us much other than do we trust our library indexing and barcode identification.
+- R1 contains the 16bp 10x GEM barcode + 12 bp UMI, and 
+- R2 contains the transcriptomic sequence + 8 bp probe barcode + constant sequence.
+We only need to run FastQC on the single cell R2 files. Conducting read sequence QC on I1 or R1 wouldn't really tell us much other than do we trust our library indexing and barcode identification. For more information, see [GEM-X Flex Gene Expression Reagent Kits](chrome-extension://efaidnbmnnnibpcajpcglclefindmkaj/https://cdn.10xgenomics.com/image/upload/v1744998428/support-documents/CG000787_GEM-X_Flex_MultiplexedSamples_UserGuide_Rev_B.pdf).
 
 For more information, please:
 - Type from the command line: fastqc --help, or
