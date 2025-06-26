@@ -1,6 +1,6 @@
 [gene-expression],,,,,
 ref,/PATH/reference_genomes/cellranger-sc-rna-seq/2020-A/homo_sapiens/GRCh38/downloads/refdata-gex-GRCh38-2020-A,,,,
-create-bam,TRUE,,,,
+create-bam,FALSE,,,,
 probe-set,/PATH/sc-rna-seq-snap-10x-Flex/data/cellranger_input_files/cellranger-8.0.1/probe_sets/Chromium_Human_Transcriptome_Probe_Set_v1.0.1_GRCh38-2020-A.csv,,,,
 filter-probes,TRUE,,,,
 ,,,,,
