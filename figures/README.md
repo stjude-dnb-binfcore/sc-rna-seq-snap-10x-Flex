@@ -27,6 +27,7 @@ The structure of this folder is as follows:
 |   └── qc_color_palette.tsv
 ├── README.md
 ├── scripts
+|   ├── create_color_palette_HumanPrimaryCellAtlasData.R
 |   ├── create_color_palette_project.R
 |___└── theme_plot.R
 ```
