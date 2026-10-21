@@ -35,8 +35,8 @@ if (!dir.exists(reference_report_dir)) {
 
 ################################################################################################################
 
-resolution = yaml$resolution_list_find_markers
-#resolution_for_input_data = yaml$resolution_find_markers
+#resolution = yaml$resolution_list_find_markers
+resolution_for_input_data = yaml$resolution_find_markers
 integration_method = yaml$integration_method_clustering_module
 input_data = yaml$module_with_input_data
 input_data_folder= yaml$input_data_folder_name
