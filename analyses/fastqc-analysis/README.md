@@ -7,11 +7,9 @@
 Parameters according to the project and analysis strategy will need to be specified in the following scripts:
 - `project_parameters.Config.yaml`: define `fastqc_metadata_dir` and `fastqc_metadata_file`. FASTQ paths to the fastqc files with format: `path1/*R2*.fastq.gz` are extracted from the `FASTQ` column from the `fastqc_metadata_dir`. The `project_metadata_fastqc_analysis.tsv` file can include one or multiple libraries, as long as it contains at least the following columns in this exact order: `ID`, `SAMPLE`, and `FASTQ`. For samples with multiple technical replicates, list all associated FASTQ file paths in the same row, using commas to separate each path.
 
-If the module needs to be run more than one time, user will need to remove the `02-multiqc-reports` folder before rerunning the module or the code will give an error at that step. Files and folder related to the MultiQC step will be generated every time a new run is performed. Folder can be deleted manually or from the node as:
+On reruns, the module removes previous MultiQC outputs (`02-multiqc-reports` and `multiqc_report.html`) automatically before generating new reports.
 
-```
-rm -r 02-multiqc-reports
-```
+Parallel FastQC uses `MAX_PARALLEL` jobs with `FASTQC_THREADS` threads each (defaults: 6 jobs, 1 thread each). These defaults match `#BSUB -n 6` in `lsf-script.txt`.
 
 ### Handling Technical Replicates in FastQC 
 
